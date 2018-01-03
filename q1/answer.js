@@ -63,11 +63,11 @@ function repeat_offender_test() {
     //run 10 tests
     for(let i=1; i < 11; i++){
 	//create array
-	let array = random_array_ints(i*10, i*10);
+	let array = random_array_ints(20, 20);
 	//run repeat_offender
 	let answer = repeat_offender(array);
 
-	console.log('The array is: ['+array+'\n the most frequent element is: '+answer.element+', with a frequency of '+answer.count);
+	console.log('The array is: ['+array+']\n the most frequent element is: '+answer.element+', with a frequency of '+answer.count);
     }
 }
 
