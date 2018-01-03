@@ -1,38 +1,69 @@
 //Find the most frequent integer in an array
 
-//Javascript refresher tests
-var array = [0,1,2,3,4,5,6,7,8,9,10];
-var random = Math.floor(Math.random() * 10);
-
-console.log('The random is: ' + random);
-console.log('The array is: ' + array);
-
 //Helper Functions
 
-//Lets create a function that makes a random sized array within the size of 100 indexes of random integers.
-
+//Lets create a function that makes a random sized array with size and range as passing arguments.
 function random_array_ints(size, range) {
-    let random_array = [];
+    
+    let random_array = []; 
     
     for(let i = 0; i < size; i++) {
 	random_array.push(Math.floor(Math.random() * range));
     }
-
+    
     return random_array;
 }
 
+//Function just to see random_array function working.
 function test_random_array() {
-
+    
     for(let i = 0; i < 20; i++){
+	
 	let size = Math.floor(Math.random() * 1000);
 	let range = Math.floor(Math.random () * 1000);
 	let random_array = random_array_ints(size, range);
-	console.log('Array: '+random_array+'\nThis is an array of size: '+size+' and range: '+range);
+	
+	console.log('Array #'+i+':['+random_array+']\nThis is an array of size: '+size+' and range: '+range);
     }
 }
     
+//Lets create our solving function that takes in an array as an argument and returns a two value object detailing the repeating element and its frequency.
+function repeat_offender(array) {
+    
+    console.log('Array: '+array);
+    
+    let repeater;
+    let count = 1;
+    
+    for(let i=0; i<array.length-1; i++){
 
-random_array = random_array_ints(10, 10);
-console.log('This is the random array: ' + random_array);
+	let element = array[i];
+	let temp_count = 1;
+	
+	for(let j=i+1; j<array.length-1;j++) {
+	    if(element === array[j]){
+		temp_count++;
+	    }
+	    if(temp_count > count){
+		repeater = element;
+		count = temp_count;
+	    }
+	}
+    }
 
-test_random_array();
+    let couple = {
+	element: repeater,
+	count: count
+    }    
+    return couple;
+}
+
+//Now lets create a test for our repeat offender function
+
+function repeater_test() {
+    
+}
+
+//Where the *Magic* happens.
+let random_array = random_array_ints(10,10);
+let test = repeat_offender(random_array);
