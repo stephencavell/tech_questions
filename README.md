@@ -1,0 +1,1 @@
+This repository is for holding my code solutions to common technical interview questions.
