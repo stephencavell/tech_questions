@@ -56,6 +56,37 @@ function repeat_offender(array) {
     return couple;
 }
 
+//Lets make a function that solves the problem in faster time
+
+function repeat_offender_faster(array) {
+    //Sort the array
+    array.sort();
+    console.log('the sorted array: '+array);
+    let repeater = array[0];
+    let count = 1;
+    let temp_count = 1;
+    let temp; 
+    
+    //loop over array starting at index 1
+    for(let i = 1; i < array.length; i++){
+	temp = array[i];
+	if(temp===array[i-1]) {
+	    temp_count++;
+	} else { temp_count = 1;}
+	if(temp_count > count) {
+	    count = temp_count;
+	    repeater = temp;
+	}
+    }
+
+    let couple = {
+	element: repeater,
+	count: count
+    }
+    console.log('repeater: ' + couple.element +', count: '+couple.count);
+    return couple;
+}
+
 //Now lets create a test for our repeat offender function
 
 function repeat_offender_test() {
@@ -72,4 +103,7 @@ function repeat_offender_test() {
 }
 
 //Where the *Magic* happens.
-repeat_offender_test();
+//repeat_offender_test();
+let test_array = random_array_ints(20, 9);
+console.log('This is the array: ['+test_array+']');
+repeat_offender_faster(test_array);
